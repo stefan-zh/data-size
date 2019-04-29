@@ -42,11 +42,6 @@ dependencies {
     // Kotlin libraries
     implementation(platform(kotlin("bom", version = "1.3.31")))
     implementation(kotlin("stdlib-jdk8"))
-    implementation(kotlin("reflect"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.0")
-
-    // Apache Commons
-    implementation("org.apache.commons:commons-lang3:3.9")
 
     // JUnit 5
     testImplementation(enforcedPlatform("org.junit:junit-bom:5.3.2"))   // use JUnit 5
