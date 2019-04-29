@@ -15,7 +15,14 @@ data class DataSize(val size: Long) {
         const val BYTES_PER_TERABYTE = BYTES_PER_GIGABYTE * 1024L
 
         /**
-         * Parses the string and determines the data size
+         * Parses the string and determines the data size. Converts to the closest whole byte.
+         *
+         * 10MB   = 10_485_760 bytes
+         * -2.5GB = -2_684_354_560 bytes
+         * 3.54MB = 3_711_959 bytes
+         * 120 KB = 122_880 bytes
+         * 120 kb = 122_880 bytes
+         * -.3GB  = -322_122_547 bytes
          */
         fun parse(str: String): DataSize {
             val result = pattern.matchEntire(str.trim()) ?: throw IllegalArgumentException("$str is not a valid data size")

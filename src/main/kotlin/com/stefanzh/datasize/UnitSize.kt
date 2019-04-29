@@ -16,7 +16,7 @@ enum class UnitSize(
 
         // Retrieves the enum from the abbreviation, null if no matching enum was found
         fun fromAbbreviation(abbr: String): UnitSize? {
-            return enums[abbr]
+            return enums[abbr.toUpperCase()]
         }
     }
 }

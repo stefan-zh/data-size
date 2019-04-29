@@ -38,6 +38,14 @@ internal class DataSizeTest {
         }
 
         @Test
+        fun `invalid abbreviation`() {
+            val ex = assertThrows(IllegalArgumentException::class.java) {
+                DataSize.parse("125 MBB")
+            }
+            assertEquals("125 MBB is not a valid data size", ex.message)
+        }
+
+        @Test
         fun `random text`() {
             val ex = assertThrows(IllegalArgumentException::class.java) {
                 DataSize.parse("21kjsgka")
@@ -50,6 +58,52 @@ internal class DataSizeTest {
         fun `positive values`(unit: UnitSize) {
             val expected = DataSize(10, unit)
             val actual = DataSize.parse("10${unit.abbr}")
+            assertEquals(expected, actual)
+        }
+
+        @ParameterizedTest
+        @EnumSource(UnitSize::class)
+        fun `negative values`(unit: UnitSize) {
+            val expected = DataSize(-10, unit)
+            val actual = DataSize.parse("-10${unit.abbr}")
+            assertEquals(expected, actual)
+        }
+
+        @ParameterizedTest
+        @EnumSource(UnitSize::class)
+        fun `uppercase unit size`(unit: UnitSize) {
+            val expected = DataSize(-10, unit)
+            val actual = DataSize.parse("-10${unit.abbr.toUpperCase()}")
+            assertEquals(expected, actual)
+        }
+
+        @ParameterizedTest
+        @EnumSource(UnitSize::class)
+        fun `lowercase unit size`(unit: UnitSize) {
+            val expected = DataSize(-10, unit)
+            val actual = DataSize.parse("-10${unit.abbr.toLowerCase()}")
+            assertEquals(expected, actual)
+        }
+
+        @ParameterizedTest
+        @EnumSource(UnitSize::class)
+        fun `space between value and unit`(unit: UnitSize) {
+            val expected = DataSize(-10, unit)
+            val actual = DataSize.parse("-10 ${unit.abbr}")
+            assertEquals(expected, actual)
+        }
+
+        @Test
+        fun `partial value`() {
+            val expected = DataSize(512, UnitSize.KILOBYTES)
+            val actual = DataSize.parse("0.5MB")
+            assertEquals(expected, actual)
+        }
+
+        @Test
+        fun `negative partial value without a leading 0`() {
+            val expected = DataSize(-512, UnitSize.KILOBYTES)
+            val actual = DataSize.parse("-.5MB")
             assertEquals(expected, actual)
         }
     }
