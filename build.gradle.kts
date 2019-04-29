@@ -19,7 +19,7 @@ plugins {
 
 configure<JavaPluginConvention> {
     group = "com.wework.redt"
-    version = "0.0.1-SNAPSHOT"
+    version = "1.0.0"
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
