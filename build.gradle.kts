@@ -7,6 +7,9 @@ plugins {
     // Kotlin JVM plugin to target the JVM
     kotlin("jvm")                       version "1.3.31"
 
+    // The Maven plugin for publishing
+    maven
+
     // Code Coverage plugin
     jacoco
 
@@ -18,7 +21,7 @@ plugins {
 }
 
 configure<JavaPluginConvention> {
-    group = "com.wework.redt"
+    group = "com.stefanzh"
     version = "1.0.0"
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
