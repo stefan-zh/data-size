@@ -22,7 +22,7 @@ plugins {
 
 configure<JavaPluginConvention> {
     group = "com.stefanzh"
-    version = "1.0.0"
+    version = "1.0.1"
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
