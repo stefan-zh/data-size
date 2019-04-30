@@ -7,9 +7,6 @@ plugins {
     // Kotlin JVM plugin to target the JVM
     kotlin("jvm")                       version "1.3.31"
 
-    // The Maven plugin for publishing
-    maven
-
     // Code Coverage plugin
     jacoco
 
@@ -18,6 +15,12 @@ plugins {
 
     // dependencyUpdates - a task to determine which dependencies have updates
     id("com.github.ben-manes.versions") version "0.21.0"
+}
+
+allprojects {
+    apply {
+        plugin("maven")
+    }
 }
 
 configure<JavaPluginConvention> {
@@ -84,23 +87,11 @@ val jacocoTestCoverageVerification by tasks.getting(JacocoCoverageVerification::
         rule {
             enabled = true
             element = "CLASS"
-            includes = listOf("com.wework.redt.materials.*")
 
             limit {
                 counter = "CLASS"
                 value = "COVEREDRATIO"
                 minimum = BigDecimal.valueOf(1.00)
-
-                excludes = listOf(
-                    "com.wework.redt.materials.configuration.*",
-                    "com.wework.redt.materials.constant.*",
-                    // The application's main() method needs to be static but Kotlin classes don't contain static
-                    // methods; instead, static methods are declared at the package level. Therefore, Kotlin creates
-                    // a separate compiled class in the build folder with suffix `Kt` inside which the static methods
-                    // are placed:
-                    // https://discuss.kotlinlang.org/t/no-class-just-fun-main/5147/2
-                    "com.wework.redt.materials.MaterialsApplicationKt"
-                )
             }
         }
 
@@ -113,14 +104,6 @@ val jacocoTestCoverageVerification by tasks.getting(JacocoCoverageVerification::
                 counter = "LINE"
                 value = "COVEREDRATIO"
                 minimum = BigDecimal.valueOf(1.00)
-
-                excludes = listOf(
-                    "com.wework.redt.materials.configuration.*",
-                    "com.wework.redt.materials.constant.*",
-                    "com.wework.redt.materials.data.*",
-                    "com.wework.redt.materials.entity.*",
-                    "com.wework.redt.materials.MaterialsApplicationKt"
-                )
             }
         }
     }
