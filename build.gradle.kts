@@ -7,6 +7,9 @@ plugins {
     // Kotlin JVM plugin to target the JVM
     kotlin("jvm")                       version "1.3.31"
 
+    // The Maven plugin for publishing
+    maven
+
     // Code Coverage plugin
     jacoco
 
@@ -15,12 +18,6 @@ plugins {
 
     // dependencyUpdates - a task to determine which dependencies have updates
     id("com.github.ben-manes.versions") version "0.21.0"
-}
-
-allprojects {
-    apply {
-        plugin("maven")
-    }
 }
 
 configure<JavaPluginConvention> {
