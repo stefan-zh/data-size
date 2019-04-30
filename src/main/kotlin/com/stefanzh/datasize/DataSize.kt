@@ -1,9 +1,9 @@
 package com.stefanzh.datasize
 
-data class DataSize(val size: Long) {
+data class DataSize(val bytes: Long) {
 
-    constructor(bytes: Long, unit: UnitSize) : this (
-        size = bytes.times(unit.bytes)
+    constructor(size: Long, unit: UnitSize) : this (
+        bytes = size.times(unit.bytes)
     )
 
     companion object {
@@ -29,7 +29,7 @@ data class DataSize(val size: Long) {
             val numeric = result.groups[1]?.value?.toDouble()!!
             val unit = result.groups[2]?.value?.let { UnitSize.fromAbbreviation(it) }!!
             val bytes = Math.round(numeric.times(unit.bytes))
-            return DataSize(bytes, UnitSize.BYTES)
+            return DataSize(bytes)
         }
     }
 }
