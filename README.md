@@ -6,7 +6,10 @@ between different types of data sizes.
 
 ## Running the tests
 
-You can run the tests by executing `./gradlew test`
+You can run the tests by executing 
+```
+./gradlew test
+```
 
 ## Coding style
 
@@ -30,7 +33,7 @@ Feel free to contribute with suggestions to this project in terms of issues or p
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/stefan-zh/data-size/tags). 
 
 ## Authors
 
@@ -38,7 +41,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
