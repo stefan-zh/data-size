@@ -7,7 +7,7 @@ data class DataSize(val bytes: Long) {
     )
 
     companion object {
-        private val pattern = Regex("(^-?\\s?\\d*.?\\d+)\\s?(B|KB|MB|GB|TB)\$", RegexOption.IGNORE_CASE)
+        private val pattern = Regex("^(-?\\s?\\d*.?\\d+)\\s?(B|KB|MB|GB|TB)\$", RegexOption.IGNORE_CASE)
 
         const val BYTES_PER_KILOBYTE = 1024L
         const val BYTES_PER_MEGABYTE = BYTES_PER_KILOBYTE * 1024L
